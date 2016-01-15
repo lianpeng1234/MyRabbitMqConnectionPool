@@ -1,0 +1,99 @@
+<project name="qrbuild" default="compile" basedir=".">
+
+	<!-- set global properties for this build -->
+	<property name="src" value="${basedir}/src" />
+	<property name="lib" value="WebRoot\WEB-INF\lib" />
+	<property name="dist" value="dist" />
+	<property name="webapps" value="." />	
+	<property name="classes" value="WebRoot\WEB-INF\classes" />
+	<property name="product" value="product" />
+	<property name="webroot" value="." />
+
+	<patternset id="resources">
+		<include name="**/*.jpe" />
+		<include name="**/*.jpeg" />
+		<include name="**/*.rmf" />
+		<include name="**/*.wav" />
+		<include name="**/*.midi" />
+		<include name="**/*.mid" />
+		<include name="**/*.au" />
+		<include name="**/*.gif" />
+		<include name="**/*.png" />
+		<include name="**/*.jpg" />
+		<include name="**/*.aiff" />
+		<include name="**/*.properties" />
+		<include name="**/*.txt" />
+		<include name="**/*.xml" />
+	</patternset>
+	<path id="classpath">
+		<pathelement location="${dist}" />
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="init" depends="clean">
+		<mkdir dir="${dist}" />
+		<mkdir dir="${classes}" />
+	</target>
+
+
+	<target name="resource">
+		<copy todir="${classes}">
+			<fileset dir="${src}">
+				<patternset refid="resources" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="clean">
+		<delete dir="${classes}" />
+		<delete dir="${dist}" />
+		<delete file="${webroot}\qrbuild.war" />
+	</target>
+	
+	<target name="clean1" >
+		<delete dir="${webroot}\qrbuild" />
+		<delete file="${webroot}\qrbuild.war" />
+	</target>	
+	
+
+	<target name="compile" depends="init">
+		<javac classpathref="classpath" debug="true" deprecation="false" destdir="${classes}" nowarn="false" target="1.7" encoding="UTF-8" source="1.7">
+			<src path="${src}" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="resource, compile, init">
+		<jar compress="false" destfile="${dist}\qrbuild.2.jar">
+			<fileset dir="${classes}">
+				<include name="**/*.class" />
+				<patternset refid="resources" />
+			</fileset>
+		</jar>
+		
+	</target>
+	
+	<target name="war" depends="compile,resource" >
+		<war compress="false" destfile="${webroot}\qrbuild.war" webxml="WebRoot/WEB-INF/web.xml">
+			<fileset dir="${webapps}/WebRoot">
+				<include name="**/*.*" />
+                <exclude name="*.iml" />
+				<exclude name="WEB-INF/web.xml" />
+				<exclude name="WEB-INF/lib/*.*" />
+			</fileset>		
+			<lib dir="${lib}" >
+				<include name="*.*" />
+				<exclude name="j2ee.jar" />
+			</lib>			
+		    <!--<lib dir="${lib-ex}">
+				<include name="*.jar" />	
+		    	<exclude name="servlet-api.jar" />
+			</lib>-->
+			<!--<lib dir="${dist}">
+				<include name="*.jar" />				
+			</lib>-->
+		</war>
+	</target>	
+
+	<target name="rejar" depends="clean, jar" />
+</project>
