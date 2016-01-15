@@ -11,7 +11,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring-test-4.2.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring-amqp-1.5.1.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring-rabbit-1.5.1.RELEASE.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring-retry-1.1.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-pool2-2.3.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/rabbitmq-client.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-logging.jar"/>
