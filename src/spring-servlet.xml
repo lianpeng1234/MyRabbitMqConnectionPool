@@ -22,6 +22,7 @@
 		<property name="port" value="5672"/>
 		<property name="username" value="root"/>
 		<property name="password" value="root"/>
+		<property name="jmxEnabled" value="true" />
 	</bean>
 	
 	<bean id="myRabbitMqFactory" class="com.sky.lp.rabbitmq.pool.MyRabbitMqFactory">
