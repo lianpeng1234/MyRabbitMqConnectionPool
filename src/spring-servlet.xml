@@ -29,7 +29,6 @@
 		<property name="maxIdle" value="5"/>
 		<property name="minIdle" value="3"/>
 		<property name="timeBetweenEvictionRunsMillis" value="6000"/>
-		<property name="numTestsPerEvictionRun" value="3"/>
 		<property name="softMinEvictableIdleTimeMillis" value="20000"/>
 	</bean>
 	
