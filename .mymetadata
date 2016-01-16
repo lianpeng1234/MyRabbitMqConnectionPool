@@ -3,7 +3,7 @@
   type="WEB"
   name="MyRabbitMqConnectionPool"
   id="myeclipse.1377486716074"
-  context-root="/myselfwebframe"
+  context-root="/myrabbitmqconnectionpool"
   j2ee-spec="5.0"
   archive="MyRabbitMqConnectionPool.war">
   <attributes>
