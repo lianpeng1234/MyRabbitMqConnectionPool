@@ -23,6 +23,14 @@
 		<property name="username" value="root"/>
 		<property name="password" value="root"/>
 		<property name="jmxEnabled" value="true" />
+		<property name="blockWhenExhausted" value="false"/>
+		
+		<property name="maxTotal" value="10"/>
+		<property name="maxIdle" value="5"/>
+		<property name="minIdle" value="3"/>
+		<property name="timeBetweenEvictionRunsMillis" value="6000"/>
+		<property name="numTestsPerEvictionRun" value="3"/>
+		<property name="softMinEvictableIdleTimeMillis" value="20000"/>
 	</bean>
 	
 	<bean id="myRabbitMqFactory" class="com.sky.lp.rabbitmq.pool.MyRabbitMqFactory">
